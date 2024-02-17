@@ -1,7 +1,7 @@
 databases:
   - name: simple_crud_app
     databaseName: simple_crud_app_development
-    user: binasjeffrey34
+    user: mysite
     plan: free
 
 services:
