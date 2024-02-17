@@ -1,0 +1,42 @@
+<style>
+.container {
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.book-details {
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+</style>
+
+
+<div class="container">
+
+  <div id="<%= dom_id(book) %>" class="book-details">
+    <p>
+      <strong>Bookno:</strong>
+      <%= book.bookno %>
+    </p>
+
+    <p>
+      <strong>Subject:</strong>
+      <%= book.subject %>
+    </p>
+
+    <p>
+      <strong>Author:</strong>
+      <%= book.author %>
+    </p>
+
+    <p>
+      <strong>Title:</strong>
+      <%= book.title %>
+    </p>
+  </div>
+
+</div>

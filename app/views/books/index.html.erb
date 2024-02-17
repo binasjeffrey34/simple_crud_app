@@ -1,0 +1,53 @@
+<style>
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    h1 {
+      color: green;
+    }
+    /* Book tile styles */
+    .book {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+    }
+    .book h2 {
+      margin-top: 0;
+    }
+    .book p {
+      margin-bottom: 5px;
+    }
+    .book a {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Avion Books</h1>
+
+<div id="books">
+  <% @books.each do |book| %>
+    <div class="book">
+      <h2><%= book.title %></h2>
+      <p><strong>Author:</strong> <%= book.author %></p>
+      <p><strong>Subject:</strong> <%= book.subject %></p>
+      <!-- Add more information about the book as needed -->
+      <p>
+        <%= link_to "See details", book %>
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<p style="color: green"><%= notice %></p>
+
+<%= link_to "Add new book", new_book_path %>
