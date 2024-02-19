@@ -1,38 +1,38 @@
 <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    .container {
-      margin: 0 auto; 
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .actions {
-      display: flex;
-    }
-    .actions a {
-      margin-right: 10px;
-    }
-    .delete-button {
-      margin-top: 10px;
-    }
+  body {
+    text-align: center;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+  }
+  .delete-button {
+    margin-top: 9px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 10px;
+    text-decoration: none;
+  }
+
+  .delete-button:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
 </style>
 
 <p style="color: green"><%= notice %></p>
 
-<%= render @book %>
+  <%= render @book %>
 
 <div class="container">
-  <div class="actions">
+  <div>
     <%= link_to "Edit", edit_book_path(@book) %> |
     <%= link_to "Back", books_path %>
   </div>
-  <div class="delete-button">
-    <%= button_to "Delete", @book, method: :delete %>
+  <div>
+    <%= button_to "Delete book", @book, method: :delete, class: "delete-button" %>
   </div>
 </div>

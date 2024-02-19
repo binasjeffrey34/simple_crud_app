@@ -1,3 +1,93 @@
+<style>
+  .form-button {
+    margin-top: 9px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 10px;
+    text-decoration: none;
+  }
+
+  .form-button:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .image-button {
+    margin-top: 9px;
+    padding: 10px 10px;
+  }
+
+  .margin-form1 {
+    margin-top: 15px;
+  }
+
+  .margin-form {
+    margin-top: 15px;
+    color: #aaa;
+  }
+
+  .margin-form:hover,
+  .margin-form:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  .modal-content {
+    background-color: #333;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 10%;
+    height: 10%;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .attach {
+    color: #aaa;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .attach:hover,
+  .attach:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  <%= "#" %>file-upload {
+    display: none;
+  }
+
+ </style>
+
 <%= form_with(model: book) do |form| %>
   <% if book.errors.any? %>
     <div style="color: red">
@@ -16,22 +106,48 @@
     <%= form.text_area :bookno %>
   </div>
 
-  <div>
-    <%= form.label :subject, style: "display: block" %>
-    <%= form.text_area :subject %>
-  </div>
-
-  <div>
-    <%= form.label :author, style: "display: block" %>
-    <%= form.text_area :author %>
-  </div>
-
-  <div>
+  <div class="margin-form1">
     <%= form.label :title, style: "display: block" %>
     <%= form.text_area :title %>
   </div>
 
+  <div class="margin-form1">
+    <%= form.label :subject, style: "display: block" %>
+    <%= form.text_area :subject %>
+  </div>
+
+  <div class="margin-form1">
+    <%= form.label :author, style: "display: block" %>
+    <%= form.text_area :author %>
+  </div>
+
+  <div class="margin-form">
+    <%= form.label :Click_to_add_a_cover_image, style: "display: block", onclick: "showModal()" %>
+    <%= form.file_field :image, id: "file-upload", style: "padding: 10px" %>
+  </div>
+
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "form-button" %>
+  </div>
+
+  <!-- Modal -->
+  <div id="upload-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <%= form.file_field :image, style: "padding: 10px" %>
+      <span class="attach", onclick="closeModal()">Attach</span>
+    </div>
   </div>
 <% end %>
+
+<script>
+  function showModal() {
+    var modal = document.getElementById("upload-modal");
+    modal.style.display = "block";
+  }
+
+  function closeModal() {
+    var modal = document.getElementById("upload-modal");
+    modal.style.display = "none";
+  }
+</script>
